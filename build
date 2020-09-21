@@ -1,0 +1,1 @@
+docker build --rm -t java6:demo .

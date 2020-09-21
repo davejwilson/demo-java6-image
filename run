@@ -1,0 +1,1 @@
+docker run -d --name java6-demo -p 8000:8000 java6:demo

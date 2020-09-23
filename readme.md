@@ -10,3 +10,9 @@ Show how to bundle Java 6 and App using non-root container.
 
 ## Run the Image
 `./run`
+
+## Startup MariaDB Database
+`docker compose up -d`
+
+## Test MariaDB
+`http://localhost:8000/keywords`

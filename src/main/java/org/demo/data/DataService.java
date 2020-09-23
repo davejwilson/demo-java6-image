@@ -25,12 +25,12 @@ public class DataService {
         }
     }
 
-    public static void main(String[] args) throws RuntimeException {
+    public static void main(String[] args) throws SQLException {
         DataService dataService = new DataService();
         System.out.println(dataService.getHelpKeywords());
     }
 
-    public List<String> getHelpKeywords() throws RuntimeException {
+    public List<String> getHelpKeywords() throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -43,12 +43,12 @@ public class DataService {
             return keywords;
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("failed to get help keywords", e);
+            throw e;
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     System.err.println("Warning: failed to close resultset");
                     // ignore, we have tried our best
                 }
@@ -56,7 +56,7 @@ public class DataService {
             if (statement != null) {
                 try {
                     statement.close();
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     System.err.println("Warning: failed to close statement");
                     // ignore, we have tried our best
                 }

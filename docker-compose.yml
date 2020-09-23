@@ -8,8 +8,8 @@ services:
       - 'mariadb_data:/bitnami'
     ports:
       - '3306:3306'
-  phpmyadmin:
-    image: 'demo-java6-image'
+  demo-java6-image:
+    image: 'demo-java6-image:1.0'
     environment:
       - MARIADB_HOSTNAME=mariadb
       - MARIADB_ROOT_PASSWORD=bitnami

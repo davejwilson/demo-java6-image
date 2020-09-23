@@ -9,7 +9,16 @@ public class DataService {
 
     public DataService() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "bitnami");
+            String hostname = System.getenv("MARIADB_HOSTNAME");
+            if (hostname == null) {
+                throw new RuntimeException("Environment MARIADB_HOSTNAME is not set");
+            }
+            String rootPassword = System.getenv("MARIADB_ROOT_PASSWORD");
+            if (rootPassword == null) {
+                throw new RuntimeException("Environment MARIADB_ROOT_PASSWORD is not set");
+            }
+            connection = DriverManager.getConnection("jdbc:mysql://" + hostname + "localhost:3306",
+                    "root", rootPassword);
         } catch (SQLException throwables) {
             throw new RuntimeException("failed to connect to mysql db", throwables);
         }

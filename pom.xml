@@ -23,6 +23,7 @@
     </dependencies>
 
     <build>
+        <finalName>demo-java6-image</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -35,6 +36,47 @@
                         </manifest>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <from>
+                        <image>azul/zulu-openjdk-alpine:6u119</image>
+                    </from>
+                    <container>
+                        <ports>
+                            <port>8000</port>
+                        </ports>
+                    </container>
+<!--                    <to>-->
+<!--                        <image></image>-->
+<!--                    </to>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>docker-build</id>
+                        <goals>
+                            <goal>dockerBuild</goal>
+                        </goals>
+                        <phase>install</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

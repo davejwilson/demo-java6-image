@@ -1,17 +1,14 @@
 # Java 6 Docker Image Demo
 Show how to bundle Java 6 and App using non-root container.
 
-## Package the Demo App
-`mvn package`  
-:information_source: Select a Java 6 JDK for the project and Java 8+ for your maven runner.
+## IDE Settings
+* Select Java 6 for the project
+* Select Java 8+ for your maven runner
 
-## Build the Container Image
-`./build`
+## Package Demo App & Build Image
+`mvn install`
 
-## Run the Image
-`./run`
-
-## Startup MariaDB Database
+## Run the App Image & MariaDB
 `docker compose up -d`
 
 ## Test MariaDB

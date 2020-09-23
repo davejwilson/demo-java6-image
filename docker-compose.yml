@@ -9,10 +9,12 @@ services:
     ports:
       - '3306:3306'
   phpmyadmin:
-    image: 'docker.io/bitnami/phpmyadmin:5-debian-10'
+    image: 'demo-java6-image'
+    environment:
+      - MARIADB_HOSTNAME=mariadb
+      - MARIADB_ROOT_PASSWORD=bitnami
     ports:
-      - '80:8080'
-      - '443:8443'
+      - '8000:8000'
     depends_on:
       - mariadb
 volumes:

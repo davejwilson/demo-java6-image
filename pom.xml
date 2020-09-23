@@ -60,6 +60,7 @@
                         <image>azul/zulu-openjdk-alpine:6u119</image>
                     </from>
                     <container>
+                        <user>guest</user>
                         <ports>
                             <port>8000</port>
                         </ports>

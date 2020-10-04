@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataService {
+public class MySqlDataService {
     private Connection connection;
 
-    public DataService() {
+    public MySqlDataService() {
         try {
             String hostname = System.getenv("MARIADB_HOSTNAME");
             if (hostname == null) {
@@ -26,8 +26,8 @@ public class DataService {
     }
 
     public static void main(String[] args) throws SQLException {
-        DataService dataService = new DataService();
-        System.out.println(dataService.getHelpKeywords());
+        MySqlDataService mySqlDataService = new MySqlDataService();
+        System.out.println(mySqlDataService.getHelpKeywords());
     }
 
     public List<String> getHelpKeywords() throws SQLException {

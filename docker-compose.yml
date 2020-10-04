@@ -13,6 +13,8 @@ services:
     environment:
       - MARIADB_HOSTNAME=mariadb
       - MARIADB_ROOT_PASSWORD=bitnami
+      - ORACLE_HOSTNAME=192.168.0.109
+      - ORACLE_SYS_PASSWORD=manager
     ports:
       - '8000:8000'
     depends_on:

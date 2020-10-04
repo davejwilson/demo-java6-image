@@ -17,15 +17,11 @@ public class OracleDataService {
             if (sysPassword == null) {
                 throw new RuntimeException("Environment ORACLE_SYS_PASSWORD is not set");
             }
-//            Class.forName("oracle.jdbc.OracleDriver");
             connection = DriverManager.getConnection("jdbc:oracle:thin:@" + hostname + ":1521:xe",
                     "sys as sysdba", sysPassword);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             throw new RuntimeException("failed to connect to oracle db", throwables);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException("failed to connect to oracle db", e);
         }
     }
     public static void main(String[] args) throws SQLException {
